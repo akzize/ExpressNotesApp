@@ -4,13 +4,17 @@
 		<h2><%= notes[i].title %></h2>
 		<p><%= notes[i].body %></p>
 
-		<h5><%= new Date(notes[i].date).toLocaleDateString("en-US", { year: 'numeric', month: 'long', day: 'numeric' }) %></h5>
+		<h5>
+			<%= new Date(notes[i].createdAt).toLocaleDateString("en-US", { year:
+			'numeric', month: 'long', day: 'numeric' }) %>
+		</h5>
 
 		<div class="actions">
 			<a href="/notes/<%= notes[i]._id %>" class="btn">edit</a>
 			<form
 				action="/notes/<%= notes[i]._id %>?_method=delete"
-				method="post" class="edit"
+				method="post"
+				class="edit"
 			>
 				<button class="btn">delete</button>
 			</form>

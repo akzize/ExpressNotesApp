@@ -3,10 +3,10 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 0 1rem;
+    text-transform: capitalize;
 
     a {
         text-decoration: none;
-        text-transform: capitalize;
 
 
     }
@@ -28,6 +28,14 @@ header {
 form {
     display: inline-block;
     width: auto;
+
+    input,
+    textarea {
+        padding: 5px;
+        border-radius: 5px;
+        border: .1px solid #b1b1b1;
+        margin: 2px 0;
+    }
 }
 
 [class^="form"] {
