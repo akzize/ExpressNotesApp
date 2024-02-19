@@ -1,29 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <!-- styles -->
-        <link rel="stylesheet" href="css/styles.css">
-		<title>Blog App</title>
-	</head>
-	<body>
-		<%- include('partials/header') %>
+<div class="notes">
+	<% for( let i = 0; i < notes.length; i++ ) { %>
+	<div class="note">
+		<h2><%= notes[i].title %></h2>
+		<p><%= notes[i].body %></p>
 
-		<div class="notes">
-			<% for( let i = 0; i < notes.length; i++ ) { %>
-			<div class="note">
-				<h2><%= notes[i].title %></h2>
-				<p><%= notes[i].body %></p>
+		<h5><%= new Date(notes[i].date).toLocaleDateString("en-US", { year: 'numeric', month: 'long', day: 'numeric' }) %></h5>
 
-				<div class="actions">
-					<a href="#" class="btn">edit</a>
-					<button class="btn">delete</button>
-				</div>
-			</div>
-			<% } %>
+		<div class="actions">
+			<a href="/notes/<%= notes[i]._id %>" class="btn">edit</a>
+			<form
+				action="/notes/<%= notes[i]._id %>?_method=delete"
+				method="post" class="edit"
+			>
+				<button class="btn">delete</button>
+			</form>
 		</div>
-		<hr />
-		<%- include('partials/footer') %>
-	</body>
-</html>
+	</div>
+	<% } %>
+</div>

@@ -27,13 +27,19 @@ export const getNote = async (req, res) => {
 	}
 };
 
+export const createNote = (req, res) => {
+	res.render("note/create", { title: "add new note" });
+};
+
 export const addNote = async (req, res) => {
 	try {
 		const { title, body } = req.body;
+
 		const newNote = new Note({ title, body });
 		newNote.save();
 
-		res.send(newNote);
+		res.redirect("/notes");
+		// res.send(newNote);
 	} catch (error) {
 		console.error(error);
 		res.status(505).send(error);
@@ -41,8 +47,17 @@ export const addNote = async (req, res) => {
 };
 
 export const editNote = async (req, res) => {
-    
-}
+	const { id } = req.params;
+	try {
+		const note = await Note.findById(id);
+
+		res.render("note/edit", { note, title: "edit note" });
+		// res.send(updatedNote);
+	} catch (error) {
+		console.error(error);
+		res.status(505).send(error);
+	}
+};
 
 export const updateNote = async (req, res) => {
 	const { id } = req.params;
@@ -50,7 +65,8 @@ export const updateNote = async (req, res) => {
 		const { title, body } = req.body;
 		const updatedNote = await Note.findByIdAndUpdate(id, { title, body });
 
-		res.send(updatedNote);
+		res.redirect('index')
+		// res.send(updatedNote);
 	} catch (error) {
 		console.error(error);
 		res.status(505).send(error);
@@ -62,7 +78,8 @@ export const deleteNote = async (req, res) => {
 	try {
 		await Note.findByIdAndDelete(id);
 
-		res.send({ message: "deleted with success" });
+		res.redirect("/notes");
+		// res.send({ message: "deleted with success" });
 	} catch (error) {
 		console.error(error);
 		res.status(505).send(error);

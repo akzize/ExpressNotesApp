@@ -1,0 +1,15 @@
+<form action="/notes" method="post" class="form-edit">
+	<input
+		type="text"
+		name="title"
+		placeholder="title"
+		value="<%= note.title %>"
+		required
+	/>
+	<textarea name="body" id="" cols="30" rows="10"><%= note.body %></textarea>
+	<span
+		><%= new Date(note.date).toLocaleDateString("en-US", { year: 'numeric',
+		month: 'long', day: 'numeric' }) %></span
+	>
+	<button class="btn">save</button>
+</form>

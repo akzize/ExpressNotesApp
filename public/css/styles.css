@@ -10,7 +10,8 @@ header {
 
 
     }
-} 
+}
+
 /* header end */
 
 .notes {
@@ -24,6 +25,19 @@ header {
     }
 }
 
+form {
+    display: inline-block;
+    width: auto;
+}
+
+[class^="form"] {
+    width: 50%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+
 .btn {
     background: #0089ac;
     border-radius: 10px;
@@ -32,6 +46,7 @@ header {
     padding: 10px;
     border: none;
     font-size: .9rem;
+    display: inline-block;
 
     &:hover {
         background: #066b85;
