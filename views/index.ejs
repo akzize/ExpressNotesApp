@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- styles -->
+        <link rel="stylesheet" href="css/styles.css">
+		<title>Blog App</title>
+	</head>
+	<body>
+		<%- include('partials/header') %>
+
+		<div class="notes">
+			<% for( let i = 0; i < notes.length; i++ ) { %>
+			<div class="note">
+				<h2><%= notes[i].title %></h2>
+				<p><%= notes[i].body %></p>
+
+				<div class="actions">
+					<a href="#" class="btn">edit</a>
+					<button class="btn">delete</button>
+				</div>
+			</div>
+			<% } %>
+		</div>
+		<hr />
+		<%- include('partials/footer') %>
+	</body>
+</html>
