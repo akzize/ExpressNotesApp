@@ -2,13 +2,16 @@
 import mongoose from "mongoose";
 
 // defining the schema
-const noteSchema = new mongoose.Schema({
-	title: { type: String, require: true },
-	body: { type: String, require: true },
-	// date: { type: Date, default: Date.now },
-}, {
-	timestamps: true
-});
+const noteSchema = new mongoose.Schema(
+	{
+		title: { type: String, require: true },
+		body: { type: String, require: true },
+		// date: { type: Date, default: Date.now },
+	},
+	{
+		timestamps: true,
+	}
+);
 
 // the model
 const Note = mongoose.model("Note", noteSchema);
